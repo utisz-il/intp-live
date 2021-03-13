@@ -1,0 +1,31 @@
+
+					<!-- IF .postrow.reaction_types && postrow.U_POSTER_ADD && postrow.POST_REACTION_ENABLE -->
+						<li class="reaction-button-show">
+							<div class="dropdown-container dropdown-button-control">
+								<span title="{L_ADD_REACTION}" class="button button-secondary dropdown-trigger">
+									<i class="icon fa-smile-o fa-fw" aria-hidden="true"></i><i class="icon fa-sort-down fa-fw" aria-hidden="true"></i><span class="sr-only">{L_REACTIONS}</span>
+								</span>
+								<div class="dropdown">
+									<div class="pointer"><div class="pointer-inner"></div></div>
+									<ul class="dropdown-contents contact-icons" style="font-size:12px !important;" id="ltpr-{postrow.POST_ID}">
+										<li>
+										<!-- BEGIN postrow.reaction_types -->
+											<!-- IF postrow.reaction_types.IMAGE_SRC && not postrow.reaction_types.CHECKED -->
+											<a href="{reaction_types.U_REACTION_ADD}" data-ajax="add_reaction">
+												<img src="{postrow.reaction_types.IMAGE_SRC}" <!-- IF REACTION_IMAGE_HEIGHT -->style="height: {REACTION_IMAGE_HEIGHT}px;width: {REACTION_IMAGE_WIDTH}px;"<!-- ENDIF --> class="reaction_image_select" alt="{reaction_types.TITLE}" title="{reaction_types.TITLE}" />
+											</a>
+											<!-- ENDIF -->
+										<!-- END postrow.reaction_types -->
+										<!-- IF postrow.U_REACTION_DELETE -->
+											<span id="delete-hide{postrow.POST_ID}" class="<!-- IF not postrow.REACTION_DELETE -->hidden<!-- ENDIF -->">
+												<a id="delete-reaction{postrow.POST_ID}" href="{postrow.REACTION_DELETE}" data-ajax="delete_reaction" title="{L_DELETE_REACTION}">
+													<img src="{REACTION_URL}delete/274e.png" <!-- IF REACTION_IMAGE_HEIGHT -->style="height: {REACTION_IMAGE_HEIGHT}px;width: {REACTION_IMAGE_WIDTH}px;"<!-- ENDIF --> class="reaction_image_select" alt="{L_DELETE}" />
+												</a>
+											</span>
+										<!-- ENDIF -->
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					<!-- ENDIF -->

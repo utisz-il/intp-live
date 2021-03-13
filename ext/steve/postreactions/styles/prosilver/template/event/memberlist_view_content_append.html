@@ -1,0 +1,16 @@
+<!-- IF .reactions -->
+<div class="panel bg1" style="text-align: center;">
+<h2>{L_HR_RECENT_REACTIONS} {REACTION_COUNT}</h2>
+	<div class="inner">
+	<!-- BEGIN reactions -->
+		<!-- IF reactions.U_VIEW_POST -->
+		<a href="{reactions.U_VIEW_POST}">
+		<!-- ENDIF -->
+			<img src="{reactions.IMAGE_SRC}" class="reaction_image" <!-- IF REACTION_IMAGE_HEIGHT -->style="float: none;height: {REACTION_IMAGE_HEIGHT}px;width: {REACTION_IMAGE_WIDTH}px;"<!-- ENDIF -->  alt="{reactions.TITLE}" title="{reactions.TITLE}" />
+		<!-- IF reactions.U_VIEW_POST -->
+		</a>
+		<!-- ENDIF -->
+	<!-- END reactions -->
+	</div>
+</div>
+<!-- ENDIF -->

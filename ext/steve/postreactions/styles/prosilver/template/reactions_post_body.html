@@ -1,0 +1,77 @@
+<!-- INCLUDE simple_header.html -->
+
+<script type="text/javascript">
+// <![CDATA[
+	/**
+	* Close previously opened popup
+	*/
+	function close_popup()
+	{
+		if (opener != null)
+		{
+			if (opener.close_waitscreen != null)
+			{
+				if (opener.close_waitscreen == 1)
+				{
+					opener.close_waitscreen = 0;
+					self.close();
+					return 0;
+				}
+			}
+		}
+		setTimeout("close_popup()", 1000);
+		return 0;
+	}
+// ]]>
+</script>
+
+	<!-- IF IMG_SRC -->
+	<div style="text-align:center;">
+		<img src="{IMG_SRC}" class="reaction-image" <!-- IF REACTION_IMAGE_HEIGHT -->style="height: {REACTION_IMAGE_HEIGHT}px;width: {REACTION_IMAGE_WIDTH}px;"<!-- ENDIF --> alt="{TITLE}" />
+	</div>
+	<!-- ENDIF -->
+
+	<div class="action-bar bottom">
+		<strong class="badge">{L_REACTIONS} {COUNT}</strong> &nbsp; {PAGE_NUMBER}
+		<!-- IF .pagination -->
+		<div class="pagination">
+			<!-- INCLUDE pagination.html -->
+		</div>
+		<!-- ENDIF -->
+		<hr class="dashed" />
+	</div>
+	
+	<!-- BEGIN reaction -->
+	<div class="panel <!-- IF reaction.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
+		<div class="inner">
+			<!-- IF reaction.IMG_SRC -->
+			<div style="float: left;">
+				<img src="{reaction.IMG_SRC}" class="reaction-image" <!-- IF REACTION_IMAGE_HEIGHT -->style="height: {REACTION_IMAGE_HEIGHT}px;width: {REACTION_IMAGE_WIDTH}px;"<!-- ENDIF --> alt="{reaction.TITLE}" />
+			</div>
+			<!-- ENDIF -->
+			<div class="reaction-avatar">
+				<!-- IF reaction.USER_AVATAR -->{reaction.USER_AVATAR}<!-- ELSE --><img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" /><!-- ENDIF -->
+				<strong>{L_USERNAME}{L_COLON}</strong> {reaction.NAME} <strong>&raquo; {L_TIME}{L_COLON}</strong> {reaction.TIME}
+			</div>
+		</div>
+	</div>
+	<!-- END reaction -->
+
+	<div class="action-bar bottom">
+		{PAGE_NUMBER}
+		<!-- IF .pagination -->
+		<div class="pagination">
+			<!-- INCLUDE pagination.html -->
+		</div>
+		<!-- ENDIF -->
+	</div>
+
+<div class="clear"></div>
+<div style="text-align: center;"><a href="#" onclick="self.close();return false;">[ {L_CLOSE_WINDOW} ]</a></div>
+
+<script type="text/javascript">
+// <![CDATA[
+	close_popup();
+// ]]>
+</script>
+<!-- INCLUDE simple_footer.html -->

@@ -1,0 +1,48 @@
+services:
+    paybas.recenttopics.controller.page_controller:
+        class: paybas\recenttopics\controller\page_controller
+        arguments:
+            - '@config'
+            - '@controller.helper'
+            - '@language'
+            - '@paybas.recenttopics.functions'
+
+    paybas.recenttopics.functions:
+        class: paybas\recenttopics\core\recenttopics
+        arguments:
+            - '@auth'
+            - '@cache'
+            - '@config'
+            - '@language'
+            - '@content.visibility'
+            - '@dbal.conn'
+            - '@dispatcher'
+            - '@pagination'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@?part3.topicprefixes.functions'
+            - '@?prefixed.manager'
+            - '@?phpbb.collapsiblecategories.operator'
+    paybas.recenttopics.listener:
+        class: paybas\recenttopics\event\listener
+        arguments:
+            - '@paybas.recenttopics.functions'
+            - '@config'
+            - '@request'
+        tags:
+            - { name: event.listener }
+    paybas.recenttopics.ucp_listener:
+        class: paybas\recenttopics\event\ucp_listener
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@dbal.conn'
+        tags:
+            - { name: event.listener }

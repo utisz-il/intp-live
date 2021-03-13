@@ -1,0 +1,72 @@
+.smiley-loading{
+	background: url('./loading.svg') center no-repeat;
+	background-size: contain;
+}
+.tabbox{
+	margin-bottom: 6px !important;
+}
+.tabbox img{
+	margin: 3px;
+}
+.message-box{
+	width: unset;
+}
+.smiley-box{
+	width: unset;
+	float: unset;
+}
+.inputbox{
+	box-sizing: border-box;
+}
+.bbcode-status{
+	display: none;
+}
+.tab-icon{
+	height: 1.5em;
+	width: auto;
+}
+.tabbox .tab > a,.tabbox .tab > a:hover{
+	border: 1px black solid;
+	bottom: -1px;
+}
+.tabbox .activetab > a, .tabbox .activetab > a:hover{
+	border-bottom: none;
+}
+.tabbox .panel{
+	border: 1px black solid;
+}
+
+#mytabs{
+	margin: 0;
+}
+
+#mytabs > ul{
+	padding-left: 7px;
+	padding-right: 7px;
+	display: flex;
+	flex-wrap: wrap;
+}
+#mytabs > ul > li{
+	flex-grow: 1;
+	text-align: center;
+}
+
+#mytabs .panel{
+	max-height: 220px;
+	text-align: initial;
+}
+
+li.tab:hover{
+	border: none;
+	background: none;
+	color: unset;
+}
+
+/* This one adapts tab box and jquery-ui css to prosilver. */
+.ui-state-focus{
+	border: none;
+	background: none;
+	font-weight: unset;
+	color: unset;
+}
+/* Todo: set css to move smiley box back above message if window is too small */

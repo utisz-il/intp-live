@@ -1,0 +1,11 @@
+/* imageset
+---------------------------------------------------*/
+
+.minilogo {
+    background-image: url("./images/mini-logo.png");
+	background-repeat: no-repeat;
+	background-position: top right;
+	width: 112px;
+	height: 44px;
+
+}

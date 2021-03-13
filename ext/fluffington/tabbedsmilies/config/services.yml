@@ -1,0 +1,20 @@
+services:
+    fluffington.tabbedsmilies.controller.acp:
+        class: fluffington\tabbedsmilies\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@request'
+            - '@template'
+            - '@dbal.conn'
+
+    fluffington.tabbedsmilies.listener:
+        class: fluffington\tabbedsmilies\event\main_listener
+        arguments:
+            - '@template'
+            - '@dbal.conn'
+            - '@config'
+            - '@path_helper'
+        tags:
+            - { name: event.listener }
+
