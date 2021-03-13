@@ -389,6 +389,52 @@ if ($keywords || $author || $author_id || $search_id || $submit)
 				$field = 'topic_id';
 			break;
 
+			case 'latest_posts':
+				$l_search_title = $user->lang['SEARCH_LATEST'];
+				// force sorting
+				$show_results = ($request->variable('sr', 'topics') == 'posts') ? 'posts' : 'topics';
+				$sort_key = 't';
+				$sort_dir = 'd';
+				$sort_by_sql['t'] = ($show_results == 'posts') ? 'p.post_time' : 't.topic_last_post_time';
+				$sql_sort = 'ORDER BY ' . $sort_by_sql[$sort_key] . (($sort_dir == 'a') ? ' ASC' : ' DESC');
+
+				gen_sort_selects($limit_days, $sort_by_text, $sort_days, $sort_key, $sort_dir, $s_limit_days, $s_sort_key, $s_sort_dir, $u_sort_param);
+				$s_sort_key = $s_sort_dir = $u_sort_param = $s_limit_days = '';
+
+				if ($show_results == 'posts')
+				{
+					$sql = 'SELECT p.post_id
+						FROM ' . POSTS_TABLE . ' p
+						WHERE ' . $m_approve_posts_fid_sql . '
+							' . ((count($ex_fid_ary)) ? ' AND ' . $db->sql_in_set('p.forum_id', $ex_fid_ary, true) : '') . "
+						$sql_sort";
+					$field = 'post_id';
+				}
+				else
+				{
+					$sql = 'SELECT t.topic_id
+						FROM ' . TOPICS_TABLE . ' t
+						WHERE t.topic_moved_id = 0
+							AND ' . $m_approve_topics_fid_sql . '
+							' . ((count($ex_fid_ary)) ? 'AND ' . $db->sql_in_set('t.forum_id', $ex_fid_ary, true) : '') . "
+						$sql_sort";
+		/*
+		[Fix] queued replies missing from "view new posts" (Bug #42705 - Patch by Paul)
+		- Creates temporary table, query is far from optimized
+
+					$sql = 'SELECT t.topic_id
+						FROM ' . TOPICS_TABLE . ' t, ' . POSTS_TABLE . ' p
+						WHERE p.post_time > ' . $user->data['user_lastvisit'] . '
+							AND t.topic_id = p.topic_id
+							AND t.topic_moved_id = 0
+							AND ' . $m_approve_topics_fid_sql . "
+						GROUP BY t.topic_id
+						$sql_sort";
+*/
+					$field = 'topic_id';
+				}
+			break;
+
 			case 'unanswered':
 				$l_search_title = $user->lang['SEARCH_UNANSWERED'];
 				$show_results = $request->variable('sr', 'topics');

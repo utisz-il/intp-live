@@ -686,6 +686,7 @@ $lang = array_merge($lang, array(
 	'SEARCH_ACTIVE_TOPICS'		=> 'Active topics',
 	'SEARCH_FOR'				=> 'Search for',
 	'SEARCH_FORUM'				=> 'Search this forum…',
+	'SEARCH_LATEST'				=> 'Latest posts',
 	'SEARCH_NEW'				=> 'New posts',
 	'SEARCH_POSTS_BY'			=> 'Search posts by',
 	'SEARCH_SELF'				=> 'Your posts',
