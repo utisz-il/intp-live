@@ -389,7 +389,7 @@ if ($keywords || $author || $author_id || $search_id || $submit)
 				$field = 'topic_id';
 			break;
 
-			case 'latest_posts':
+			case 'latestposts':
 				$l_search_title = $user->lang['SEARCH_LATEST'];
 				// force sorting
 				$show_results = ($request->variable('sr', 'topics') == 'posts') ? 'posts' : 'topics';
@@ -580,6 +580,12 @@ if ($keywords || $author || $author_id || $search_id || $submit)
 	// show_results should not change after this
 	$per_page = ($show_results == 'posts') ? $config['posts_per_page'] : $config['topics_per_page'];
 	$total_match_count = 0;
+	
+	// override per page for latest posts so more activity is seen
+	
+	if ($search_id == 'latestposts'){
+		$per_page = 100;
+	}
 
 	// Set limit for the $total_match_count to reduce server load
 	$total_matches_limit = 1000;
