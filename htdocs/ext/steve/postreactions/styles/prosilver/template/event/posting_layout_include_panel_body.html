@@ -1,0 +1,37 @@
+<!-- IF S_FORUM_ENABLE_REACTIONS && (U_DISABLE_TOPIC_REACTIONS || U_DISABLE_POST_REACTIONS || U_DISABLE_REACTION_TYPES) -->
+    <div id="post-reaction" class="panel bg3">
+       <div class="inner">
+	   <fieldset class="fields1">
+	   
+			<!-- IF U_DISABLE_POST_REACTIONS || U_DISABLE_TOPIC_REACTIONS -->
+			<p>{L_EXPLAIN_REACTIONS_POSTING}</p>
+			<div class="panel reaction_inner">
+				<div class="inner">	
+				<!-- IF U_DISABLE_TOPIC_REACTIONS && S_NEW_MESSAGE -->
+					<div><label for="enable_topic_reactions"><input type="checkbox" name="enable_topic_reactions" id="enable_topic_reactions"{S_ENABLE_TOPIC_REACTIONS} /> {L_ENABLE_TOPIC_REACTIONS}</label></div>
+				<!-- ENDIF -->
+				<!-- IF U_DISABLE_POST_REACTIONS -->
+					<div><label for="enable_post_reactions"><input type="checkbox" name="enable_post_reactions" id="enable_post_reactions"{S_ENABLE_POST_REACTIONS} /> {L_ENABLE_POST_REACTIONS}</label></div>
+				<!-- ENDIF -->				
+				</div>
+			</div>
+			<!-- ENDIF -->
+			
+			<!-- IF U_DISABLE_REACTION_TYPES -->
+			<p>{L_SELECT_REACTION_TYPES}</p>
+			<div class="panel reaction_inner">
+				<div class="inner">	
+				<!-- BEGIN reaction_types -->
+					<div style="float: left;text-align: center;" <!-- IF reaction_types.CHECKED -->class="reaction_disabled"<!-- ELSE -->class="reaction_enabled"<!-- ENDIF -->>				
+						<img src="{reaction_types.IMAGE_SRC}" class="reaction_image" <!-- IF REACTION_IMAGE_HEIGHT -->style="height: {REACTION_IMAGE_HEIGHT}px;width: {REACTION_IMAGE_WIDTH}px;"<!-- ENDIF --> alt="{reaction_types.TITLE}" title="{reaction_types.TITLE}" /><br />
+						<input type="checkbox" class="radio" name="reaction_type_id[{reaction_types.ID}]" value="1" <!-- IF reaction_types.CHECKED -->checked="checked"<!-- ENDIF --> />
+					</div>
+				<!-- END reaction_types -->	
+				</div>
+			</div>
+			<!-- ENDIF -->
+			
+		</fieldset>
+		</div>
+	</div>
+<!-- ENDIF -->	

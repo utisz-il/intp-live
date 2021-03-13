@@ -1,0 +1,110 @@
+.outerbox{
+	background: white;
+	overflow: auto;
+}
+
+.innerbox{
+	width: 300px;
+	height: 300px;
+	background: lightgray;
+	margin: 3px;
+	float: left;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+}
+.smileybox{
+	flex-grow: 1;
+	margin-top: 5px;
+	overflow: auto;
+}
+
+.innerbox h2{
+	text-align: center;
+	background: #b6bbbf;
+}
+
+.sortsmiley{
+	padding: 2px;
+}
+
+.newbox{
+	width: 300px;
+	height: 300px;
+	background: lightgray;
+	margin: 3px;
+	float: left;
+	padding: 5px;
+	overflow: auto;
+}
+
+.newbox h2{
+	text-align: center;
+	background: #b6bbbf;
+}
+
+.newbox img{
+	padding: 2px;
+}
+
+.placeholder{
+	border: 1px dotted black;
+	margin: 7px;
+	height: 300px;
+	width: 300px;
+	float: left;
+}
+
+.miniholder{
+	border: 1px dotted black;
+	padding: 2px;
+}
+
+.noline:hover{
+	text-decoration: none;
+}
+
+.rename_box{
+	width: 100%;
+	box-sizing: border-box;
+	display: none
+}
+
+.icon{
+	cursor: pointer;
+}
+
+.ui-sortable-handle{
+	cursor: grab;
+}
+
+.ui-sortable-handle h2{
+	cursor: grab;
+}
+
+.renamebutton{
+	color: green;
+}
+
+.deletebutton{
+	color: red;
+}
+
+#newbox{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.newbutton{
+	color: green;
+	font-size: 3em;
+}
+
+.buttonbox{
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+

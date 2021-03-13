@@ -1,0 +1,38 @@
+services:
+    david63.sitelogo.listener:
+        class: david63\sitelogo\event\listener
+        arguments:
+            - '@config'
+            - '@config_text'
+            - '@template'
+            - '@user'
+            - '%core.root_path%'
+            - '%slconstants%'			
+        tags:
+            - { name: event.listener }
+
+    david63.sitelogo.admin.controller:
+        class: david63\sitelogo\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@config_text'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@log'
+            - '@language'
+            - '@david63.sitelogo.core.functions'
+            - '%slconstants%'
+
+    david63.sitelogo.core.functions:
+        class: david63\sitelogo\core\functions
+        arguments:
+            - '@ext.manager'
+
+parameters:
+    slconstants:
+        form_key: 'sitelogo'
+
+        logo_position_left: 0
+        logo_position_center: 1
+        logo_position_right: 2

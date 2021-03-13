@@ -1,0 +1,117 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_TABBEDSMILIES') }}</h1>
+
+{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+<!-- IF not $INCLUDED_JQUERYUIJS -->
+	<!-- INCLUDECSS @fluffington_tabbedsmilies/jquery-ui.css -->
+    <!-- INCLUDEJS @fluffington_tabbedsmilies/jquery-ui.js -->
+    <!-- DEFINE $INCLUDED_JQUERYUIJS = true -->
+<!-- ENDIF -->
+<!-- INCLUDECSS @fluffington_tabbedsmilies/tab.css -->
+<!-- INCLUDEJS @fluffington_tabbedsmilies/tab.js -->
+
+<form id="fluffington_tabbedsmilies_acp" name="fluffington_tabbedsmilies_acp" method="post" action="{{ U_ACTION }}&action=save">
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="tab_loading">{{ lang('TABBEDSMILIES_LAZY') }}{{ lang('COLON') }}</label><br><span>{{ lang('TABBEDSMILIES_LAZY_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="tab_loading1" name="tab_loading" value="1"{% if tab_loading %} checked{% endif %} />
+				<label for="tab_loading1">{{ lang('YES') }}</label>
+				<input type="radio" id="tab_loading0" name="tab_loading" value="0"{% if not tab_loading %} checked{% endif %} />
+				<label for="tab_loading0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="tab_closed">{{ lang('TABBEDSMILIES_CLOSED') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<input type="radio" id="tab_closed1" name="tab_closed" value="1"{% if tab_closed %} checked{% endif %} />
+				<label for="tab_closed1">{{ lang('YES') }}</label>
+				<input type="radio" id="tab_closed0" name="tab_closed" value="0"{% if not tab_closed %} checked{% endif %} />
+				<label for="tab_closed0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="tab_text">{{ lang('TABBEDSMILIES_TEXT') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<input type="radio" id="tab_text1" name="tab_text" value="1"{% if tab_text %} checked{% endif %} />
+				<label for="tab_text1">{{ lang('YES') }}</label>
+				<input type="radio" id="tab_text0" name="tab_text" value="0"{% if not tab_text %} checked{% endif %} />
+				<label for="tab_text0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="tab_icon">{{ lang('TABBEDSMILIES_ICON') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<input type="radio" id="tab_icon1" name="tab_icon" value="1"{% if tab_icon %} checked{% endif %} />
+				<label for="tab_icon1">{{ lang('YES') }}</label>
+				<input type="radio" id="tab_icon0" name="tab_icon" value="0"{% if not tab_icon %} checked{% endif %} />
+				<label for="tab_icon0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="tab_layout">{{ lang('TABBEDSMILIES_LAYOUT') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<select name="tab_layout">
+					<option{% if tab_layout == 0 %} selected{% endif %} value="0">{{ lang('TABBEDSMILIES_ABOVE') }}</option>
+					<option{% if tab_layout == 1 %} selected{% endif %} value="1">{{ lang('TABBEDSMILIES_BELOW') }}</option>
+					<option{% if tab_layout == 2 %} selected{% endif %} value="2">{{ lang('TABBEDSMILIES_LEFT') }}</option>
+					<option{% if tab_layout == 3 %} selected{% endif %} value="3">{{ lang('TABBEDSMILIES_RIGHT') }}</option>
+					<!-- <option{% if tab_layout == 2 %} selected{% endif %}>{{ lang('TABBEDSMILIES_INSIDE') }}</option> -->
+				</select>
+			</dd>
+		</dl>
+	</fieldset>
+		
+	<fieldset>
+		<legend>Tabs</legend>
+		<div id="outerbox" class="outerbox">
+			{% for tab in tab_list %}
+				{% if tab.id == 0 %}
+					<div class="innerbox" id="tab-0" title="{{ lang('TABBEDSMILIES_HIDDEN_EXPLAIN') }}" >
+						<h2>{{ lang('TABBEDSMILIES_HIDDEN') }}</h2>
+				{% else %}
+					<div class="innerbox outersort" id="tab-{{ tab.id }}" {% if tab.id == 1 %}title="{{ lang('TABBEDSMILIES_DEFAULT_EXPLAIN') }}"{% endif %}>
+						<h2>
+							<span><span class="h2_text">{{ tab.name }}</span> <i class="icon fas fa-pencil renamebutton" title="{{ lang('TABBEDSMILIES_RENAME') }}"></i>{% if tab.id != 1 %} <i class="icon far fa-times deletebutton" data-id="tab-{{ tab.id }}" title="{{ lang('TABBEDSMILIES_DELETE') }}"></i>{% endif %}</span>
+							<input autocomplete="off" type="text" class="rename_box" maxlength=50 data-id="tab-{{ tab.id }}" value="{{ tab.name }}" />
+						</h2>
+				{% endif %}
+				<div class="smileybox">
+				{% for smiley in smiley_list %}
+					{% if smiley.tab_id == tab.id %}
+						<img id="smiley-{{ smiley.id }}" class="sortsmiley" src="../images/smilies/{{ smiley.url }}" style="width:{{ smiley.width }}px;height:{{ smiley.height }}px;" alt="{{ smiley.emotion }}" title="{{ smiley.code }} {{ smiley.emotion }}" />
+					{% endif %}
+				{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+			<div class="newbox outersort" id="newbox" style="position:relative">
+				<h2>{{ lang('TABBEDSMILIES_NEW_BOX') }}</h2>
+				<div class="buttonbox">
+					<i class="icon fas fa-plus-square newbutton" data-id="1" title="{{ lang('TABBEDSMILIES_NEW_BOX') }}"></i>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<p class="submit-buttons">
+			<input name="sorting" id="updated_sorting" value="" type="hidden" />
+			<input name="rename" id="updated_names" value="" type="hidden" />
+			<input name="delete" id="deleted_tabs" value="" type="hidden" />
+			<input class="button1" type="submit" value="{{ lang('SUBMIT') }}" />
+			<input id="resetButton" class="button2" type="button" value="{{ lang('RESET') }}" />
+			{{ S_FORM_TOKEN }}
+		</p>
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}

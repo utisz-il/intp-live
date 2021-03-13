@@ -1,0 +1,26 @@
+.floatquote {
+    position: absolute;
+}
+.multiquote-wrap {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 2px solid #12A3EB;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+}
+.multiquote-wrap .floatquote {
+    position: static;
+}
+.active-quote {
+    border-color: #0A8ED0;
+}
+.active-quote .icon {
+    color: #0A8ED0;
+}
+.mqbtn,
+.multiquote {
+    cursor: pointer;
+}
