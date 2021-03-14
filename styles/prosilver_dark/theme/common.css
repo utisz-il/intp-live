@@ -183,7 +183,7 @@ a:hover	{ text-decoration: underline; }
 /* Site description and logo */
 .site-description {
 	float: left;
-	width: 65%;
+	width: 25%;
 }
 
 .site-description h1 {
