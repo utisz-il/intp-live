@@ -1,13 +1,13 @@
 /* Random Quote Index */
-.qc-quotes { margin-top: 6px;font-size: 1.0em; }
+.qc-quotes { margin-top:6px; font-size: 1.0em; }
 
-.qc-quote-body { padding: 8px; }
+.qc-quote-body { padding: 10px; }
 
 .qc-add { float: right; }
 
 .qc-quote { font-size: 1.2em; }
 
-.qc-quote-box { max-width: 50%; float: right; position: relative; }
+.qc-quote-box { max-width: 50%; float: right; position: relative; clear: right; }
 
 .qc-author { float: right;font-style: italic; }
 
