@@ -1,4 +1,14 @@
 {% if S_DM_QUOTES_ENABLE %}
+<div class="content qc-quotebox">
+	<div class="qc-quote-body">
+		<span class="qc-quote">&#10077;{{ QUOTE }}&#10078; &nbsp;</span>
+		<span class="qc-author">{{ AUTHOR }}</span>
+	</div>
+</div>
+{% endif %}
+
+<! --
+{% if S_DM_QUOTES_ENABLE %}
 {% if S_ADMIN_CHECK %}
 <div id="message" class="rules">
 	<div class="inner">
@@ -11,6 +21,9 @@
 {% if QUOTE_IS_COLLAPSIBLE %}
 <a class="category{% if S_QUOTE_HIDDEN %} hidden-category{% endif %}" style="display: none; height: 0"></a>
 {% endif %}
+
+
+
 
 <div class="forabg qc-quotes">
 	<div class="inner">
@@ -54,5 +67,7 @@
 		</ul>
 	</div>
 </div>
+
 {% endif %}
 {% endif %}
+-->
