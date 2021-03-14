@@ -1,7 +1,7 @@
 /* Random Quote Index */
 .qc-quotes { margin-top:6px; font-size: 1.0em; }
 
-.qc-quote-body { padding: 10px; }
+.qc-quote-body { padding: 10px; min-height: 44px; }
 
 .qc-add { float: right; }
 
