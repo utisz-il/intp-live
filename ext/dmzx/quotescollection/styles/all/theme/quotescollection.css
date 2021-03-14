@@ -5,11 +5,11 @@
 
 .qc-add { float: right; }
 
-.qc-quote { font-size: 1.2em; }
+.qc-quote { font-size: 1.2em; font-style: italic; }
 
 .qc-quote-box { max-width: 35%; float: right; position: relative; clear: right; margin-top: 6px; }
 
-.qc-author { float: right;font-style: italic; }
+.qc-author { float: right; font-style: italic; }
 
 /* Show All Quotes - Add Quote Page */
 .qc-header { border:none;text-align: center; }
