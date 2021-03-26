@@ -118,7 +118,7 @@
 	}
 }
 
-@media (max-width: 700px) {
+@media (max-width: 830px) {
 	.responsive-hide { display: none !important; }
 	.responsive-show { display: block !important; }
 	.responsive-show-inline { display: inline !important; }
@@ -567,7 +567,7 @@
 
 }
 
-@media (min-width: 701px) and (max-width: 950px) {
+@media (min-width: 831px) and (max-width: 950px) {
 
 	ul.topiclist dt {
     	margin-right: -410px;
